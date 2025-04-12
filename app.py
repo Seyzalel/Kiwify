@@ -28,13 +28,40 @@ def executar():
     print("Vendora - Sistema de Conversão Autônoma em Tráfego Direto\n")
     time.sleep(1)
 
+    plataformas = [
+        "1. Kiwify",
+        "2. Kirvano",
+        "3. Braip",
+        "4. Hotmart",
+        "5. Eduzz",
+        "6. Monetizze"
+    ]
+
+    print("Selecione a plataforma de marketing digital para esta operação:\n")
+    for p in plataformas:
+        print(p)
+    print()
+
+    while True:
+        escolha = input("Digite o número correspondente à plataforma desejada: ").strip()
+        if escolha in [str(i) for i in range(1, len(plataformas)+1)]:
+            plataforma_escolhida = plataformas[int(escolha)-1][3:]
+            break
+        else:
+            print("Entrada inválida. Por favor, selecione uma opção válida.\n")
+
+    link = input(f"\nInforme o link de afiliado da página principal de venda na {plataforma_escolhida}: ").strip()
+    print()
+
     print("Sistema iniciado com sucesso.")
-    print("Vendora está operando em modo ativo.")
+    print(f"Plataforma: {plataforma_escolhida}")
+    print(f"Link de Afiliado: {link}")
+    print("Vendora está agora operando em modo ativo.")
     print("O módulo de rastreamento está monitorando interações em tempo real.")
     print("Segmentação de público, qualificação de leads e condução à conversão estão em execução contínua.")
-    print("O sistema está analisando comportamento, fonte de tráfego, compatibilidade com a oferta e intenção de compra.")
+    print("O sistema está analisando comportamento, origem de tráfego, compatibilidade com a oferta e intenção de compra.")
     taxa_prevista = round(random.uniform(32.0, 41.0), 1)
-    print(f"Taxa estimada de conversão para este horário: {taxa_prevista}% (base comportamental dinâmica)\n")
+    print(f"Taxa estimada de conversão para este horário: {taxa_prevista}%\n")
     time.sleep(6)
 
     total_eventos = random.randint(28, 54)
@@ -69,11 +96,13 @@ def executar():
 
     time.sleep(1.5)
 
-    print("\nOperação finalizada. O sistema encerrou a sessão ao atingir os parâmetros configurados.\n")
+    print("\nOperação finalizada. O sistema encerrou a sessão após atingir os parâmetros de desempenho.\n")
     time.sleep(1)
 
     print("Resumo da Sessão:\n")
-    print(f"Eventos Processados: {total_eventos}")
+    print(f"Plataforma Utilizada: {plataforma_escolhida}")
+    print(f"Link Monitorado: {link}")
+    print(f"Total de Eventos Monitorados: {total_eventos}")
     print(f"Cliques Registrados: {total_cliques}")
     print(f"Leads Qualificados: {total_leads}")
     print(f"Vendas Realizadas: {vendas_confirmadas}")
