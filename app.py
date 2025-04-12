@@ -14,7 +14,7 @@ def gerar_horarios(qtd):
     minutos = sorted(random.sample(range(15, intervalo_total - 15), qtd))
     return [inicio + timedelta(minutes=m) for m in minutos]
 
-def animacao(texto, duracao=0.8):
+def animacao(texto, duracao=0.9):
     ciclos = ['⠋','⠙','⠹','⠸','⠼','⠴','⠦','⠧','⠇','⠏']
     for _ in range(3):
         for etapa in ciclos:
@@ -53,16 +53,27 @@ def executar():
     link = input(f"\nInforme o link de afiliado da página principal de venda na {plataforma_escolhida}: ").strip()
     print()
 
-    print("Sistema iniciado com sucesso.")
+    print("Estabelecendo comunicação com os servidores da rede Vendora.")
+    animacao("Sincronizando módulos de rastreamento inteligente")
+    time.sleep(1)
+
+    print("Inicializando arquitetura de tráfego direto.")
+    print("Carregando estrutura global de proxies e balanceadores de sessão.")
+    time.sleep(1)
+
+    print("Este processo garante que o tráfego gerado a partir do seu link de afiliado seja roteado por múltiplos IPs de entrada,")
+    print("espalhados por regiões estratégicas, aumentando a reputação do clique, evitando bloqueios e elevando a taxa de entrega.")
+    print("Além disso, cada proxy é adaptado dinamicamente ao perfil do visitante, criando sessões únicas que aumentam o índice de conversão.\n")
+    time.sleep(6)
+
+    print("Sistema ativo. Sessão iniciada com sucesso.\n")
     print(f"Plataforma: {plataforma_escolhida}")
     print(f"Link de Afiliado: {link}")
     print("Vendora está agora operando em modo ativo.")
-    print("O módulo de rastreamento está monitorando interações em tempo real.")
-    print("Segmentação de público, qualificação de leads e condução à conversão estão em execução contínua.")
-    print("O sistema está analisando comportamento, origem de tráfego, compatibilidade com a oferta e intenção de compra.")
+    print("Monitorando o funil de conversão em tempo real.")
     taxa_prevista = round(random.uniform(32.0, 41.0), 1)
     print(f"Taxa estimada de conversão para este horário: {taxa_prevista}%\n")
-    time.sleep(6)
+    time.sleep(5)
 
     total_eventos = random.randint(28, 54)
     total_vendas = random.randint(6, 18)
@@ -83,37 +94,36 @@ def executar():
         if tipo == "clique":
             print(f"[{hora}] Clique identificado no link de afiliado.")
         elif tipo == "lead":
-            print(f"[{hora}] Lead qualificado capturado com base no perfil de engajamento.")
+            print(f"[{hora}] Lead qualificado capturado com base em comportamento.")
         elif tipo == "venda":
-            print(f"[{hora}] Venda concluída. Comissão gerada: R$ 137,90 — Produto: Sistema Viral")
+            print(f"[{hora}] Venda concluída. Comissão creditada: R$ 137,90 — Produto: Sistema Viral")
             vendas_confirmadas += 1
         time.sleep(0.17)
 
     total_cliques = len([e for e in eventos if e[1] == "clique"])
     total_leads = len([e for e in eventos if e[1] == "lead"])
     lucro_total = vendas_confirmadas * comissao
-    taxa_final = round((vendas_confirmadas / total_eventos) * 100, 2)
+    taxa_real = round((vendas_confirmadas / total_eventos) * 100, 2)
 
     time.sleep(1.5)
 
-    print("\nOperação finalizada. O sistema encerrou a sessão após atingir os parâmetros de desempenho.\n")
+    print("\nSessão encerrada com sucesso após atingir a meta operacional.\n")
     time.sleep(1)
 
     print("Resumo da Sessão:\n")
     print(f"Plataforma Utilizada: {plataforma_escolhida}")
     print(f"Link Monitorado: {link}")
-    print(f"Total de Eventos Monitorados: {total_eventos}")
+    print(f"Eventos Processados: {total_eventos}")
     print(f"Cliques Registrados: {total_cliques}")
     print(f"Leads Qualificados: {total_leads}")
-    print(f"Vendas Realizadas: {vendas_confirmadas}")
+    print(f"Vendas Confirmadas: {vendas_confirmadas}")
     print(f"Produto Promovido: Sistema Viral")
     print(f"Comissão por Venda: R$ 137,90")
     print(f"Lucro Total: R$ {lucro_total:,.2f}")
-    print(f"Taxa de Conversão Real: {taxa_final}%\n")
+    print(f"Taxa de Conversão Real: {taxa_real}%\n")
 
-    print("Toda a jornada foi conduzida com autonomia e inteligência estratégica.")
-    print("Vendora assumiu o controle, operou silenciosamente e entregou resultados.\n")
-    print("Relatório processado por Vendora — Tecnologia de Conversão Comercial Inteligente © 2025")
+    print("Vendora finalizou a operação com excelência, controle e inteligência total de conversão.")
+    print("Relatório processado por Vendora — Tecnologia Comercial Autônoma © 2025")
 
 if __name__ == "__main__":
     executar()
