@@ -12,7 +12,7 @@ def gerar_horarios(qtd):
     fim = agora - timedelta(hours=4)
     intervalo_total = int((fim - inicio).total_seconds() // 60)
     minutos = sorted(random.sample(range(15, intervalo_total - 15), qtd))
-    return [inicio + timedelta(minutes=m) for m in minutos]
+    return [inicio + timedelta(minutes=m, seconds=random.randint(0, 59)) for m in minutos]
 
 def animacao(texto, duracao=0.9):
     ciclos = ['⠋','⠙','⠹','⠸','⠼','⠴','⠦','⠧','⠇','⠏']
