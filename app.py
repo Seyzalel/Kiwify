@@ -100,7 +100,7 @@ def executar():
     eventos.sort()
 
     vendas_confirmadas = 0
-    comissao = 137.90
+    comissao = 21.45
 
     for horario, tipo in eventos:
         hora = horario.strftime("%H:%M:%S")
@@ -130,8 +130,8 @@ def executar():
     print(f"Cliques Registrados: {total_cliques}")
     print(f"Leads Qualificados: {total_leads}")
     print(f"Vendas Confirmadas: {vendas_confirmadas}")
-    print(f"Produto Promovido: Sistema Viral")
-    print(f"Comissão por Venda: R$ 137,90")
+    print(f"Produto Promovido: MAPA DA PROSPERIDADE")
+    print(f"Comissão por Venda: R$ 21,45")
     print(f"Lucro Total: R$ {lucro_total:,.2f}")
     print(f"Taxa de Conversão Real: {taxa_real}%\n")
 
