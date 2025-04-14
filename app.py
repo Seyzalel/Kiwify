@@ -6,13 +6,25 @@ from datetime import datetime, timedelta
 def limpar():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def gerar_horarios(qtd):
+def gerar_horarios_eventos(qtd_eventos, qtd_vendas):
     agora = datetime.now()
     inicio = agora - timedelta(hours=6)
     fim = agora - timedelta(hours=4)
-    intervalo_total = int((fim - inicio).total_seconds() // 60)
-    minutos = sorted(random.sample(range(15, intervalo_total - 15), qtd))
-    return [inicio + timedelta(minutes=m, seconds=random.randint(0, 59)) for m in minutos]
+    total_minutos = int((fim - inicio).total_seconds() // 60)
+    base_minutos = sorted(random.sample(range(10, total_minutos - 10), qtd_eventos))
+    horarios = [inicio + timedelta(minutes=m, seconds=random.randint(0, 59)) for m in base_minutos]
+    horarios.sort()
+    horarios_vendas = []
+    ultimo_minuto = -10
+    for h in horarios:
+        minutos = h.hour * 60 + h.minute
+        if len(horarios_vendas) < qtd_vendas and minutos - ultimo_minuto >= 5:
+            horarios_vendas.append(h)
+            ultimo_minuto = minutos
+    restantes = [h for h in horarios if h not in horarios_vendas]
+    eventos_finais = horarios_vendas + restantes
+    eventos_finais.sort()
+    return eventos_finais, horarios_vendas
 
 def animacao(texto, duracao=0.9):
     ciclos = ['⠋','⠙','⠹','⠸','⠼','⠴','⠦','⠧','⠇','⠏']
@@ -75,16 +87,17 @@ def executar():
     print(f"Taxa estimada de conversão para este horário: {taxa_prevista}%\n")
     time.sleep(5)
 
-    total_eventos = random.randint(28, 54)
-    total_vendas = random.randint(6, 23)
-    total_leads = random.randint(6, 24)
+    total_eventos = random.randint(36, 54)
+    total_vendas = random.randint(6, 12)
+    total_leads = random.randint(total_vendas + 2, total_vendas + 6)
     total_cliques = total_eventos - total_vendas - total_leads
 
     tipos = (["venda"] * total_vendas) + (["lead"] * total_leads) + (["clique"] * total_cliques)
     random.shuffle(tipos)
 
-    horarios = gerar_horarios(total_eventos)
-    eventos = sorted(zip(horarios, tipos))
+    horarios, horarios_venda = gerar_horarios_eventos(total_eventos, total_vendas)
+    eventos = list(zip(horarios, tipos))
+    eventos.sort()
 
     vendas_confirmadas = 0
     comissao = 137.90
@@ -100,8 +113,8 @@ def executar():
             vendas_confirmadas += 1
         time.sleep(0.17)
 
-    total_cliques = len([e for e in eventos if e[1] == "clique"])
-    total_leads = len([e for e in eventos if e[1] == "lead"])
+    total_cliques = tipos.count("clique")
+    total_leads = tipos.count("lead")
     lucro_total = vendas_confirmadas * comissao
     taxa_real = round((vendas_confirmadas / total_eventos) * 100, 2)
 
