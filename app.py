@@ -76,8 +76,8 @@ def executar():
     time.sleep(5)
 
     total_eventos = random.randint(28, 54)
-    total_vendas = random.randint(9, 20)
-    total_leads = random.randint(6, 19)
+    total_vendas = random.randint(6, 23)
+    total_leads = random.randint(6, 24)
     total_cliques = total_eventos - total_vendas - total_leads
 
     tipos = (["venda"] * total_vendas) + (["lead"] * total_leads) + (["clique"] * total_cliques)
@@ -87,7 +87,7 @@ def executar():
     eventos = sorted(zip(horarios, tipos))
 
     vendas_confirmadas = 0
-    comissao = 21,45
+    comissao = 137.90
 
     for horario, tipo in eventos:
         hora = horario.strftime("%H:%M:%S")
@@ -118,7 +118,7 @@ def executar():
     print(f"Leads Qualificados: {total_leads}")
     print(f"Vendas Confirmadas: {vendas_confirmadas}")
     print(f"Produto Promovido: Sistema Viral")
-    print(f"Comissão por Venda: R$ 21,45")
+    print(f"Comissão por Venda: R$ 137,90")
     print(f"Lucro Total: R$ {lucro_total:,.2f}")
     print(f"Taxa de Conversão Real: {taxa_real}%\n")
 
