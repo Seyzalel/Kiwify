@@ -109,7 +109,7 @@ def executar():
         elif tipo == "lead":
             print(f"[{hora}] Lead qualificado capturado com base em comportamento.")
         elif tipo == "venda":
-            print(f"[{hora}] Venda concluída. Comissão creditada: R$ 137,90 — Produto: Sistema Viral")
+            print(f"[{hora}] Venda concluída. Comissão creditada: R$ 21,45 — Produto: MAPA DA PROSPERIDADE")
             vendas_confirmadas += 1
         time.sleep(0.17)
 
